@@ -28,7 +28,6 @@ log_transaction() {
     local desc="$2"
     local balance_after="$3"
 
-    # Determine package type
     local pkg_type=""
     if [[ "$desc" =~ _Daily$ || "$desc" =~ Daily$ ]]; then
         pkg_type="Daily"
@@ -40,7 +39,6 @@ log_transaction() {
         pkg_type="Other"
     fi
 
-    # Remove trailing type suffix from package name
     local pkg_name="${desc%_Daily}"
     pkg_name="${pkg_name%_Weekly}"
     pkg_name="${pkg_name%_Monthly}"
@@ -62,15 +60,15 @@ show_history() {
     while IFS= read -r line; do
         line="${line#[}"
         line="${line%]}"
-        # Split by comma - there are exactly 5 fields
+
         IFS=',' read -r datetime type name price balance <<< "$line"
-        # Trim spaces
+
         datetime=$(echo "$datetime" | xargs)
         type=$(echo "$type" | xargs)
         name=$(echo "$name" | xargs)
         price=$(echo "$price" | xargs)
         balance=$(echo "$balance" | xargs)
-        # Split datetime into date and time (format: YYYY-MM-DD HH:MM:SS)
+
         date=$(echo "$datetime" | cut -d' ' -f1)
         time=$(echo "$datetime" | cut -d' ' -f2)
         printf "%-19s | %-8s | %-7s | %-15s | %5s | %7s\n" "$date" "$time" "$type" "$name" "$price" "$balance"

@@ -2,7 +2,7 @@
 
 source ./utils.sh
 
-# Create the balance file if missing
+
 if [ ! -f "$DATA_FILE" ]; then
     echo "balance: 500" > "$DATA_FILE"
 fi
