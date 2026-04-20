@@ -62,13 +62,17 @@ show_history() {
     while IFS= read -r line; do
         line="${line#[}"
         line="${line%]}"
-        IFS=',' read -r date time type name price balance <<< "$line"
-        date=$(echo "$date" | xargs)
-        time=$(echo "$time" | xargs)
+        # Split by comma - there are exactly 5 fields
+        IFS=',' read -r datetime type name price balance <<< "$line"
+        # Trim spaces
+        datetime=$(echo "$datetime" | xargs)
         type=$(echo "$type" | xargs)
         name=$(echo "$name" | xargs)
         price=$(echo "$price" | xargs)
         balance=$(echo "$balance" | xargs)
+        # Split datetime into date and time (format: YYYY-MM-DD HH:MM:SS)
+        date=$(echo "$datetime" | cut -d' ' -f1)
+        time=$(echo "$datetime" | cut -d' ' -f2)
         printf "%-19s | %-8s | %-7s | %-15s | %5s | %7s\n" "$date" "$time" "$type" "$name" "$price" "$balance"
     done < "$HISTORY_FILE"
 
