@@ -1,29 +1,53 @@
 ###
 name: main
 options = [Voice package, Internet package, Check Balance, History, Exit]
-actions = [GO:voice, SHOW:Internet coming soon..., BAL:check, HIST:show, EXIT:0]
+actions = [GO:voice, GO:internet, BAL:check, HIST:show, EXIT:0]
 ###
 
 ###
 name: voice
 options = [Daily, Weekly, Monthly, Back]
-actions = [GO:daily, GO:weekly, GO:monthly, GO:main]
+actions = [GO:daily_voice, GO:weekly_voice, GO:monthly_voice, GO:main]
 ###
 
 ###
-name: daily
-options = [5 birr - 20 min, 10 birr - 42 min, 15 birr - 65 min, Back]
-actions = [BUY:5:20min_Daily, BUY:10:42min_Daily, BUY:15:65min_Daily, GO:voice]
+name: daily_voice
+options = [Birr 5 for 20 Min + 10 Min Night bonus, Birr 10 for 42 Min + 21 Min Night bonus, Birr 15 for 65 Min + 33 Min Night bonus, Birr 20 for 88 Min + 44 Min Night bonus, Back]
+actions = [BUY:5:20min+10night_Daily, BUY:10:42min+21night_Daily, BUY:15:65min+33night_Daily, BUY:20:88min+44night_Daily, GO:voice]
 ###
 
 ###
-name: weekly
-options = [25 birr - 70 min, 35 birr - 110 min, 45 birr - 145 min, Back]
-actions = [BUY:25:70min_Weekly, BUY:35:110min_Weekly, BUY:45:145min_Weekly, GO:voice]
+name: weekly_voice
+options = [Birr 25 for 70 Min + 35 Min Night bonus, Birr 35 for 110 Min + 55 Min Night bonus, Birr 45 for 145 Min + 73 Min Night bonus, Back]
+actions = [BUY:25:70min+35night_Weekly, BUY:35:110min+55night_Weekly, BUY:45:145min+73night_Weekly, GO:voice]
 ###
 
 ###
-name: monthly
-options = [50 birr - 125 min, 75 birr - 190 min, 100 birr - 270 min, Back]
-actions = [BUY:50:125min_Monthly, BUY:75:190min_Monthly, BUY:100:270min_Monthly, GO:voice]
+name: monthly_voice
+options = [Birr 50 for 125 Min + 63 Min Night bonus, Birr 75 for 190 Min + 95 Min Night bonus, Birr 100 for 270 Min + 135 Min Night bonus, Back]
+actions = [BUY:50:125min+63night_Monthly, BUY:75:190min+95night_Monthly, BUY:100:270min+135night_Monthly, GO:voice]
+###
+
+###
+name: internet
+options = [Daily, Weekly, Monthly, Back]
+actions = [GO:daily_data, GO:weekly_data, GO:monthly_data, GO:main]
+###
+
+###
+name: daily_data
+options = [Br.5 for 100 MB, Br.10 for 200 MB, Br.15 for 300 MB, Br.25 for 600 MB, Br.37 for 1GB, Br.70 for 2GB, Back, Main Menu]
+actions = [BUY:5:100MB_Daily, BUY:10:200MB_Daily, BUY:15:300MB_Daily, BUY:25:600MB_Daily, BUY:37:1GB_Daily, BUY:70:2GB_Daily, GO:internet, GO:main]
+###
+
+###
+name: weekly_data
+options = [Br.50 for 650 MB, Br.70 for 1GB, Br.140 for 2.5GB, Br.200 for 4GB, Br.300 for 7.5GB, Br.500 for 15GB, Back, Main Menu]
+actions = [BUY:50:650MB_Weekly, BUY:70:1GB_Weekly, BUY:140:2.5GB_Weekly, BUY:200:4GB_Weekly, BUY:300:7.5GB_Weekly, BUY:500:15GB_Weekly, GO:internet, GO:main]
+###
+
+###
+name: monthly_data
+options = [Birr 82 for 1GB, Birr 150 for 2GB, Birr 280 for 4GB, Birr 550 for 10GB, Birr 950 for 20GB, Birr 1500 for 50GB, Birr 1900 for 100 GB, Back, Main Menu]
+actions = [BUY:82:1GB_Monthly, BUY:150:2GB_Monthly, BUY:280:4GB_Monthly, BUY:550:10GB_Monthly, BUY:950:20GB_Monthly, BUY:1500:50GB_Monthly, BUY:1900:100GB_Monthly, GO:internet, GO:main]
 ###
