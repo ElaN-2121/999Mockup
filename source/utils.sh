@@ -79,6 +79,20 @@ show_history() {
     echo "---------------------|----------|---------|-----------------|-------|--------"
 }
 
+confirm_purchase() {
+    local price="$1"
+    local desc="$2"
+    local current_bal="$3"
+
+    echo -e "\n--- CONFIRM PURCHASE ---"
+    echo "Package : $desc"
+    echo "Price   : $price Birr"
+    echo "Balance : $current_bal Birr"
+    read -p "Press 1 to confirm, any other key to cancel: " choice
+    [ "$choice" = "1" ]
+}
+
+
 menu() {
     local page_name="$1"
 
@@ -105,7 +119,6 @@ menu() {
 
     echo "--------------------------" >&2
     echo "      ETHIO TELECOM       " >&2
-    echo "  Balance: $(get_balance) Br. " >&2
     echo "--------------------------" >&2
 
     for i in "${!opt_array[@]}"; do
@@ -113,7 +126,7 @@ menu() {
     done
     echo "--------------------------" >&2
     
-    read -p "Selection: " choice >&2
+    read -p "Choice: " choice >&2
     
     choice=$(echo "$choice" | xargs)
     if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le "${#opt_array[@]}" ]; then

@@ -21,19 +21,26 @@ while true; do
             echo "${action#SHOW:}"
             read -p "Press Enter to return..."
             ;;
+        
         BUY:*)
             price=$(echo "$action" | cut -d':' -f2)
             desc=$(echo "$action" | cut -d':' -f3)
-            if deduct_balance "$price"; then
-                new_balance=$(get_balance)
-                log_transaction "$price" "$desc" "$new_balance"
-                echo -e "\nPurchase Successful: $desc ($price Birr)"
+            current_bal=$(get_balance)
+            if confirm_purchase "$price" "$desc" "$current_bal"; then
+                if deduct_balance "$price"; then
+                    new_balance=$(get_balance)
+                    log_transaction "$price" "$desc" "$new_balance"
+                    echo -e "\nPurchase Successful: $desc ($price Birr)"
+                else
+                    echo -e "\nError: Your balance is too low."
+                fi
             else
-                echo -e "\nError: Your balance is too low."
+                echo -e "\nPurchase cancelled."
             fi
-            read -p "Press Enter..."
+            read -p "Press Enter to return to main menu..."
             current_page="main"
             ;;
+
         BAL:check)
             echo -e "\n--- BALANCE ---"
             echo "Your current balance is: $(get_balance) Birr"

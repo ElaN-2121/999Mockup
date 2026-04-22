@@ -12,20 +12,20 @@ actions = [GO:daily_voice, GO:weekly_voice, GO:monthly_voice, GO:main]
 
 ###
 name: daily_voice
-options = [Birr 5 for 20 Min + 10 Min Night bonus, Birr 10 for 42 Min + 21 Min Night bonus, Birr 15 for 65 Min + 33 Min Night bonus, Birr 20 for 88 Min + 44 Min Night bonus, Back]
-actions = [BUY:5:20min+10night_Daily, BUY:10:42min+21night_Daily, BUY:15:65min+33night_Daily, BUY:20:88min+44night_Daily, GO:voice]
+options = [Birr 5 for 20 Min + 10 Min Night bonus, Birr 10 for 42 Min + 21 Min Night bonus, Birr 15 for 65 Min + 33 Min Night bonus, Birr 20 for 88 Min + 44 Min Night bonus, Back, Main Menu]
+actions = [BUY:5:20min+10night_Daily, BUY:10:42min+21night_Daily, BUY:15:65min+33night_Daily, BUY:20:88min+44night_Daily, GO:voice, GO:main]
 ###
 
 ###
 name: weekly_voice
-options = [Birr 25 for 70 Min + 35 Min Night bonus, Birr 35 for 110 Min + 55 Min Night bonus, Birr 45 for 145 Min + 73 Min Night bonus, Back]
-actions = [BUY:25:70min+35night_Weekly, BUY:35:110min+55night_Weekly, BUY:45:145min+73night_Weekly, GO:voice]
+options = [Birr 25 for 70 Min + 35 Min Night bonus, Birr 35 for 110 Min + 55 Min Night bonus, Birr 45 for 145 Min + 73 Min Night bonus, Back, Main Menu]
+actions = [BUY:25:70min+35night_Weekly, BUY:35:110min+55night_Weekly, BUY:45:145min+73night_Weekly, GO:voice, GO:main]
 ###
 
 ###
 name: monthly_voice
-options = [Birr 50 for 125 Min + 63 Min Night bonus, Birr 75 for 190 Min + 95 Min Night bonus, Birr 100 for 270 Min + 135 Min Night bonus, Back]
-actions = [BUY:50:125min+63night_Monthly, BUY:75:190min+95night_Monthly, BUY:100:270min+135night_Monthly, GO:voice]
+options = [Birr 50 for 125 Min + 63 Min Night bonus, Birr 75 for 190 Min + 95 Min Night bonus, Birr 100 for 270 Min + 135 Min Night bonus, Back, Main Menu]
+actions = [BUY:50:125min+63night_Monthly, BUY:75:190min+95night_Monthly, BUY:100:270min+135night_Monthly, GO:voice, GO:main]
 ###
 
 ###
